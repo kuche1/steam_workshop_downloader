@@ -1,3 +1,10 @@
+# Fork info
+
+Forked from https://github.com/nosoop/steam_workshop_downloader. \
+Fixes a problem related to downloading workshop collections that \
+link other collections (such as \
+https://steamcommunity.com/workshop/filedetails/?id=3140149743).
+
 # Steam Workshop Content Downloader
 Little script for downloading plugins from steam workshop for server that do not
 support natively the workshop like left4dead2 server.
