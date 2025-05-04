@@ -8,6 +8,9 @@ from urllib.error import HTTPError, URLError
 import json
 import time
 
+DOWNLOAD_LINKED_COLLECTIONS = False
+# ideally this would be a cmdline argument
+
 def safe_print(*objects, errors = 'ignore', **kwargs):
     '''
     I really don't want to have to bother with fixing up all my texts when printing, so here's
@@ -143,8 +146,9 @@ def get_plugins_id_from_collections_list (collections_id_list):
                 for item in collection['children']:
                     if item['filetype'] == 0:   # children is a plugin
                         plugins_id_list.append(item['publishedfileid'])
-                    elif item['filetype'] == 2: # childre is a collection
-                        sub_collection.append(item['publishedfileid'])
+                    elif item['filetype'] == 2: # children is a collection
+                        if DOWNLOAD_LINKED_COLLECTIONS:
+                            sub_collection.append(item['publishedfileid'])
                     else:                       # unknown type
                         print("Unrecognised filetype: " + str(item['filetype']))
         if len(sub_collection) > 0:
